@@ -16,25 +16,71 @@ const DEFAULT_MATERIALS = [
 function getDefaultData() {
     const cId = { v: 100 }; const nid = () => cId.v++;
     const customers = [
-        { id: nid(), name: '대관령삼대떡비지', type: 'customer', contact: '송현성', phone: '', bizNo: '365-95-01000', note: '한식' },
-        { id: nid(), name: '누리식당', type: 'customer', contact: '', phone: '', bizNo: '', note: '한식' },
-        { id: nid(), name: '개벽산거리는날', type: 'customer', contact: '', phone: '', bizNo: '117-18-77253', note: '한식' },
-        { id: nid(), name: '계봉삼소이횟집', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
-        { id: nid(), name: '카루마루스', type: 'customer', contact: '', phone: '', bizNo: '224-05-56680', note: '한식' },
-        { id: nid(), name: '경강리식당', type: 'customer', contact: '', phone: '', bizNo: '226-28-51949', note: '한식' },
-        { id: nid(), name: '대관민속주류', type: 'customer', contact: '조남임', phone: '', bizNo: '226-28-02042', note: '금융업소매/신용조합' },
-        { id: nid(), name: '봉평에메랄드', type: 'customer', contact: '', phone: '', bizNo: '224-28-01138', note: '한식' },
-        { id: nid(), name: '봉평오만복국', type: 'customer', contact: '함원안', phone: '', bizNo: '461-12-00528', note: '한식음식점' },
-        { id: nid(), name: '봉평식당', type: 'customer', contact: '정영의', phone: '', bizNo: '226-32-05621', note: '한식점업' },
-        { id: nid(), name: '봉평커피', type: 'customer', contact: '', phone: '', bizNo: '226-10-27648', note: '' },
-        { id: nid(), name: '신채원당', type: 'customer', contact: '한준오', phone: '', bizNo: '474-36-00442', note: '한식' },
-        { id: nid(), name: '삼수식당', type: 'customer', contact: '', phone: '', bizNo: '228-02-70939', note: '' },
-        { id: nid(), name: '소금강', type: 'customer', contact: '', phone: '', bizNo: '226-10-27849', note: '' },
-        { id: nid(), name: '전고지유가전', type: 'customer', contact: '김종백', phone: '', bizNo: '226-82-12889', note: '도소매' },
-        { id: nid(), name: '전봉래토마토', type: 'customer', contact: '김영고', phone: '', bizNo: '226-52-10464', note: '도소매/축산업' },
-        { id: nid(), name: '하들마트', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
-        { id: nid(), name: '진부시장맛집', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
-        { id: nid(), name: '용평리조트', type: 'customer', contact: '', phone: '', bizNo: '', note: '' }
+        /* 1 */ { id: nid(), name: '주민자치센터사무소', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 2 */ { id: nid(), name: '대관령삼대떡비지', type: 'customer', contact: '송현성', phone: '', bizNo: '365-85-01000', note: '음식점업/한식', address: '강원 평창군 봉평면 이효석길 47' },
+        /* 3 */ { id: nid(), name: '내수분관리대행', type: 'customer', contact: '', phone: '', bizNo: '', note: '', address: '1213호(올림푸이랜드)' },
+        /* 4 */ { id: nid(), name: '제빵사가뜨는길', type: 'customer', contact: '주지민', phone: '', bizNo: '117-10-77253', note: '음식점업/한식', address: '강원도 평창군 봉평면이효석생가길 7-9' },
+        /* 5 */ { id: nid(), name: '계봉삼소이횟집', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 6 */ { id: nid(), name: '카루마루스', type: 'customer', contact: '', phone: '', bizNo: '798-31-00420', note: '음식점업', address: '강원도 평창군 봉평면 이효석생가길 74-5' },
+        /* 7 */ { id: nid(), name: '누리식당', type: 'customer', contact: '', phone: '', bizNo: '224-08-50980', note: '한식', address: '강원도 봉평면 진부면 태백리 소도 201-2' },
+        /* 8 */ { id: nid(), name: '경강리식당', type: 'customer', contact: '', phone: '', bizNo: '226-29-51949', note: '한식/일반음식점', address: '강원도 평창군 진부면 동산리 299' },
+        /* 9 */ { id: nid(), name: '대관민속주류', type: 'customer', contact: '조남임', phone: '', bizNo: '226-32-15483', note: '한식', address: '강원도 평창군 진부면 태백리 95-1층' },
+        /* 10 */ { id: nid(), name: '대관령민속주류판매장', type: 'customer', contact: '조남임', phone: '', bizNo: '226-28-02042', note: '금융업소매/신용조합', address: '강원 평창군 대관령면 횡계리 747-5' },
+        /* 11 */ { id: nid(), name: '대관령버섯농원사', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 12 */ { id: nid(), name: '대관령농원해필마루', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 13 */ { id: nid(), name: '대관령해피마루식당', type: 'customer', contact: '', phone: '', bizNo: '226-92-08882', note: '음식점/한식접업', address: '강원도 평창군 대관령면 횡계리 감기재 335-5' },
+        /* 14 */ { id: nid(), name: '대관령황태다보탕', type: 'customer', contact: '김경옥', phone: '', bizNo: '224-92-12035', note: '소매업/기타 대형 종합소매업', address: '강원도 봉평면 대관령면 태백리 959-2' },
+        /* 15 */ { id: nid(), name: '대관령팔미도', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 16 */ { id: nid(), name: '봉평에메랄드', type: 'customer', contact: '고정옥', phone: '', bizNo: '224-20-01130', note: '음식점업/한식', address: '강원도 봉평면 원길리 서울로 1323' },
+        /* 17 */ { id: nid(), name: '봉평오만복국', type: 'customer', contact: '함원안', phone: '', bizNo: '461-12-00528', note: '한식음식점', address: '' },
+        /* 18 */ { id: nid(), name: '봉평커피', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 19 */ { id: nid(), name: '봉평식당', type: 'customer', contact: '정영의', phone: '', bizNo: '226-32-05821', note: '음식점업/한식접업', address: '강원도 평창군 봉평면 진부면 전1길 100 46' },
+        /* 20 */ { id: nid(), name: '봉평이경원', type: 'customer', contact: '', phone: '', bizNo: '226-32-51228', note: '음식업한식', address: '횡계면' },
+        /* 21 */ { id: nid(), name: '봉평맛있는집', type: 'customer', contact: '', phone: '', bizNo: '226-10-27648', note: '도매업/학부모식당', address: '강원도 봉평면 태백리' },
+        /* 22 */ { id: nid(), name: '신채원당', type: 'customer', contact: '한준오', phone: '', bizNo: '474-36-00442', note: '음식점업/한식점 음식점업', address: '강원도 평창군 진부면 대관령면 신동1길 152-10층 1호' },
+        /* 23 */ { id: nid(), name: '삼수식당', type: 'customer', contact: '', phone: '', bizNo: '226-04-59950', note: '음식/한식', address: '' },
+        /* 24 */ { id: nid(), name: '소금강', type: 'customer', contact: '', phone: '', bizNo: '451-33-00394', note: '음식점업/한식', address: '강원도 평창군 진부면 전부전 진부면 1길 37-9' },
+        /* 25 */ { id: nid(), name: '서울상회', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 26 */ { id: nid(), name: '비밀도', type: 'customer', contact: '', phone: '', bizNo: '228-02-52178', note: '', address: '강원도 평창군 진부면 봉평면 진부면 진부중앙1길로 601-41층' },
+        /* 27 */ { id: nid(), name: '누리식당2', type: 'customer', contact: '', phone: '', bizNo: '226-10-27848', note: '' },
+        /* 28 */ { id: nid(), name: '진부칼국수', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 29 */ { id: nid(), name: '명문가', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 30 */ { id: nid(), name: '봉평냉면', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 31 */ { id: nid(), name: '용산식당', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 32 */ { id: nid(), name: '진미가', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 33 */ { id: nid(), name: '봉평냉면추어탕전문', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 34 */ { id: nid(), name: '진부면영빈관', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 35 */ { id: nid(), name: '봉평대가마', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 36 */ { id: nid(), name: '진부양꼬치', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 37 */ { id: nid(), name: '새힘약국', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 38 */ { id: nid(), name: '봉평촌집오리', type: 'customer', contact: '전상부', phone: '', bizNo: '224-16-46753', note: '음식점업/막국수', address: '강원 평창군 봉평면 금평경계로로 1205-1' },
+        /* 39 */ { id: nid(), name: '봉평효석문학리조트', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 40 */ { id: nid(), name: '숙여과일전', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 41 */ { id: nid(), name: '봉평한울', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 42 */ { id: nid(), name: '진부면사무소', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 43 */ { id: nid(), name: '선수촌식당', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 44 */ { id: nid(), name: '오산새마을금고점', type: 'customer', contact: '이명숙', phone: '', bizNo: '226-11-31396', note: '음식/일반한식', address: '강원도 횡계면 진부면 진부면 간우사길 787-2' },
+        /* 45 */ { id: nid(), name: '봉산새내마카시', type: 'customer', contact: '박미순', phone: '', bizNo: '226-11-33818', note: '음식점업/한식', address: '강원도 봉평면 진부면 진부면 간우사길 229-1' },
+        /* 46 */ { id: nid(), name: '오수열삼계탕', type: 'customer', contact: '박규섬', phone: '', bizNo: '226-82-15784', note: '음식/한식', address: '강원 진부면 대관령면 팔진고개로 258-5' },
+        /* 47 */ { id: nid(), name: '유별난식당수', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 48 */ { id: nid(), name: '이조떡갈비수', type: 'customer', contact: '장미숙', phone: '', bizNo: '224-03-99702', note: '음식/한식', address: '강원도 평창군 봉평면 합방리 삼산로 312-1' },
+        /* 49 */ { id: nid(), name: '봉평면우체국수', type: 'customer', contact: '', phone: '', bizNo: '226-03-51247', note: '기타소매업/기타상점', address: '강원도 평창군 봉평면 무이리 601-4' },
+        /* 50 */ { id: nid(), name: '진부면우체복수', type: 'customer', contact: '', phone: '', bizNo: '226-02-73839', note: '음식점업/한식', address: '강원도 평창군 진부면 태백리 325-3' },
+        /* 51 */ { id: nid(), name: '정기대리점수', type: 'customer', contact: '', phone: '', bizNo: '267-04-03637', note: '음식점업/한식', address: '강원도 평창군 진부면 봉평면 13-5' },
+        /* 52 */ { id: nid(), name: '진고회사직삼겹데지갈', type: 'customer', contact: '이건호', phone: '033-335-5797', bizNo: '226-61-50455', note: '한식점업', address: '강원도 평창군 봉평면 대관령면 무이 마을길 19' },
+        /* 53 */ { id: nid(), name: '전고지유가전', type: 'customer', contact: '김종백', phone: '', bizNo: '226-82-12889', note: '도소매/성육', address: '강원 봉평면 진부면 진부중앙로 27' },
+        /* 54 */ { id: nid(), name: '진부양조장(도매)', type: 'customer', contact: '', phone: '', bizNo: '', note: '도매' },
+        /* 55 */ { id: nid(), name: '전봉레', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 56 */ { id: nid(), name: '전봉상회', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 57 */ { id: nid(), name: '전봉래토마토', type: 'customer', contact: '김영고', phone: '', bizNo: '226-82-10464', note: '도소매/기타축산업', address: '강원도 대성리 진부면 횡계경계 길로 3965' },
+        /* 58 */ { id: nid(), name: '하들마트', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 59 */ { id: nid(), name: '진부시장맛집', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 60 */ { id: nid(), name: '독목판국수', type: 'customer', contact: '임원지', phone: '', bizNo: '224-16-03345', note: '음식점/음식점업/한식', address: '' },
+        /* 61 */ { id: nid(), name: '태백관', type: 'customer', contact: '정영백', phone: '', bizNo: '225-82-00380', note: '숙박업/소매서비스', address: '강원 평창군 진부면 하진부리 157-14' },
+        /* 62 */ { id: nid(), name: '용평리조트', type: 'customer', contact: '', phone: '', bizNo: '', note: '한식,음식점업' },
+        /* 63 */ { id: nid(), name: '봉평메밀꽃', type: 'customer', contact: '', phone: '', bizNo: '', note: '' },
+        /* 64 */ { id: nid(), name: '횡성식당', type: 'customer', contact: '김소연', phone: '070-7703-749', bizNo: '852-85-00728', note: '음식점업/기타음식료품', address: '강원도 평창군 대관령면 경강로 5195-25', fax: '033-744-3319' },
+        /* 65 */ { id: nid(), name: '천안술마트', type: 'customer', contact: '', phone: '', bizNo: '', note: '' }
     ];
     const suppliers = [
         { id: nid(), name: '주향입국', type: 'supplier', contact: '', phone: '', bizNo: '', note: '입국 공급' },
@@ -292,7 +338,7 @@ function renderWorkLog() {
     h += `<div class="section-header"><h3>📋 작업 일지</h3></div>`;
     if (!recs.length) h += `<div class="empty-state"><div class="empty-state__icon">📋</div><div class="empty-state__text">작업 기록이 없습니다.<br>＋ 버튼으로 추가하세요.</div></div>`;
     else recs.forEach(r => {
-        const p = getProduct(r.productId); const stg = WORK_STAGES.find(s => s.id === r.stage) || { name: '?', emoji: '?' }; const matList = (r.materials || []).map(m => m.name + ' ' + m.quantity + ' ' + (m.unit || '')).join(', ');
+        const p = getProduct(r.productId); const stg = WORK_STAGES.find(s => s.id === r.stage) || { name: '?', emoji: '?' }; const matList = (r.materials || []).map(m => { if (m.totalAmount) return m.name + ' ' + m.quantity + '×' + m.unitAmount + '=' + m.totalAmount + (m.unit || 'kg'); return m.name + ' ' + m.quantity + (m.unit || ''); }).join(', ');
         h += `<div class="list-item" onclick="editWorkLog(${r.id})"><div class="list-item__icon">${stg.emoji}</div><div class="list-item__body"><div class="list-item__title">${p.emoji} ${p.name} — ${stg.name}</div><div class="list-item__subtitle">${formatDateFull(r.date)}${matList ? ' · 원료: ' + matList : ''}${r.note ? ' · ' + r.note : ''}</div></div></div>`;
     });
     mainContent.innerHTML = h; bindMonthNav();
@@ -301,7 +347,7 @@ function renderWorkLog() {
 function openWorkLogForm(editId) {
     const ex = editId ? (data.workLogs || []).find(r => r.id === editId) : null; const prods = data.products || DEFAULT_PRODUCTS; const mats = data.materials || DEFAULT_MATERIALS;
     let matRows = ex && ex.materials ? ex.materials.length : 1;
-    function matRowHTML(i, m) { return `<div class="form-row mat-row" data-i="${i}"><div class="form-group" style="flex:2"><select class="form-select mat-name"><option value="">-- 원료 --</option>${mats.map(mt => `<option value="${mt.name}" ${m && m.name === mt.name ? 'selected' : ''}>${mt.name} (${mt.supplier})</option>`).join('')}<option value="__custom" ${m && !mats.find(mt => mt.name === m.name) ? 'selected' : ''}>직접입력</option></select></div><div class="form-group" style="flex:1"><input type="number" class="form-input mat-qty" value="${m ? m.quantity : ''}" placeholder="수량"></div><div class="form-group" style="flex:0.8"><input type="text" class="form-input mat-unit" value="${m ? m.unit || '' : 'kg'}" placeholder="단위"></div></div>`; }
+    function matRowHTML(i, m) { return `<div class="mat-row" data-i="${i}"><div class="form-row"><div class="form-group" style="flex:2"><select class="form-select mat-name"><option value="">-- 원료 --</option>${mats.map(mt => `<option value="${mt.name}" ${m && m.name === mt.name ? 'selected' : ''}>${mt.name} (${mt.supplier})</option>`).join('')}<option value="__custom" ${m && !mats.find(mt => mt.name === m.name) ? 'selected' : ''}>직접입력</option></select></div><div class="form-group" style="flex:0.6"><input type="text" class="form-input mat-unit" value="${m ? m.unit || '' : 'kg'}" placeholder="단위"></div></div><div class="form-row" style="margin-top:4px"><div class="form-group" style="flex:1"><input type="number" class="form-input mat-qty" value="${m ? m.quantity : ''}" placeholder="수량"></div><div style="display:flex;align-items:center;padding:0 4px;color:#888">×</div><div class="form-group" style="flex:1"><input type="number" class="form-input mat-unit-amt" value="${m && m.unitAmount ? m.unitAmount : ''}" placeholder="단위량"></div><div style="display:flex;align-items:center;padding:0 4px;color:#888">=</div><div class="form-group" style="flex:1"><input type="text" class="form-input mat-total" value="${m && m.totalAmount ? m.totalAmount : ''}" placeholder="총량" readonly style="background:#2a2a2a"></div></div></div>`; }
     let h = `<div class="form-group"><label>날짜</label><input type="date" class="form-input" id="f-date" value="${ex ? ex.date : today()}"></div>
 <div class="form-group"><label>제품</label><select class="form-select" id="f-product">${prods.map(p => `<option value="${p.id}" ${ex && ex.productId === p.id ? 'selected' : ''}>${p.emoji} ${p.name}</option>`).join('')}</select></div>
 <div class="form-group"><label>공정 단계</label><div class="toggle-group" id="stage-btns">${WORK_STAGES.map(s => `<button type="button" class="toggle-btn ${ex && ex.stage === s.id ? 'active' : ''}" data-val="${s.id}">${s.emoji} ${s.name}</button>`).join('')}</div></div>
@@ -317,10 +363,12 @@ function openWorkLogForm(editId) {
     let selStage = ex ? ex.stage : 'jumo';
     $('stage-btns').querySelectorAll('.toggle-btn').forEach(btn => { btn.addEventListener('click', () => { $('stage-btns').querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); selStage = btn.dataset.val; }); });
     if (!ex) $('stage-btns').querySelector('.toggle-btn').classList.add('active');
-    $('add-mat-row').addEventListener('click', () => { const rows = $('mat-rows'); const i = rows.children.length; rows.insertAdjacentHTML('beforeend', matRowHTML(i, null)); });
+    function bindMatCalc() { $('mat-rows').querySelectorAll('.mat-row').forEach(row => { const qtyEl = row.querySelector('.mat-qty'), uaEl = row.querySelector('.mat-unit-amt'), totEl = row.querySelector('.mat-total'); const calc = () => { const q = parseFloat(qtyEl.value) || 0, u = parseFloat(uaEl.value) || 0; totEl.value = q && u ? (q * u) : ''; }; qtyEl.addEventListener('input', calc); uaEl.addEventListener('input', calc); }); }
+    $('add-mat-row').addEventListener('click', () => { const rows = $('mat-rows'); const i = rows.children.length; rows.insertAdjacentHTML('beforeend', matRowHTML(i, null)); bindMatCalc(); });
+    bindMatCalc();
     $('f-submit').addEventListener('click', () => {
         const d = $('f-date').value, pi = $('f-product').value, n = $('f-note').value; if (!d) { showToast('날짜 입력', 'error'); return; }
-        const materials = []; $('mat-rows').querySelectorAll('.mat-row').forEach(row => { const sel = row.querySelector('.mat-name'); let nm = sel.value; if (nm === '__custom') nm = prompt('원료 이름을 입력하세요') || ''; const qty = parseFloat(row.querySelector('.mat-qty').value) || 0; const unit = row.querySelector('.mat-unit').value; if (nm && qty) materials.push({ name: nm, quantity: qty, unit }); });
+        const materials = []; $('mat-rows').querySelectorAll('.mat-row').forEach(row => { const sel = row.querySelector('.mat-name'); let nm = sel.value; if (nm === '__custom') nm = prompt('원료 이름을 입력하세요') || ''; const qty = parseFloat(row.querySelector('.mat-qty').value) || 0; const unitAmount = parseFloat(row.querySelector('.mat-unit-amt').value) || 0; const totalAmount = qty * unitAmount || qty; const unit = row.querySelector('.mat-unit').value; if (nm && qty) materials.push({ name: nm, quantity: qty, unitAmount: unitAmount, totalAmount: totalAmount, unit }); });
         const rec = { date: d, productId: pi, stage: selStage, materials, note: n }; if (ex) Object.assign(ex, rec); else { if (!data.workLogs) data.workLogs = []; data.workLogs.push({ id: genId(), ...rec }); } saveData(); closeModal(); render(); showToast(ex ? '수정' : '추가됨', 'success');
     });
     if (ex) $('f-delete').addEventListener('click', () => { showConfirm('삭제?', () => { data.workLogs = data.workLogs.filter(r => r.id !== editId); saveData(); closeModal(); render(); showToast('삭제됨', 'success'); }); });
@@ -333,12 +381,12 @@ function renderMaterials() {
     let h = `<div class="section-header"><h3>📝 원료 목록</h3></div>`;
     mats.forEach((m, i) => {
         const inQty = (data.purchases || []).filter(p => p.item && p.item.includes(m.name)).reduce((s, r) => s + 1, 0);
-        const outQty = (data.workLogs || []).reduce((s, wl) => s + (wl.materials || []).filter(x => x.name === m.name).reduce((ss, x) => ss + x.quantity, 0), 0);
+        const outQty = (data.workLogs || []).reduce((s, wl) => s + (wl.materials || []).filter(x => x.name === m.name).reduce((ss, x) => ss + (x.totalAmount || x.quantity), 0), 0);
         h += `<div class="list-item" onclick="editMaterial(${i})"><div class="list-item__icon">🧪</div><div class="list-item__body"><div class="list-item__title">${m.name}</div><div class="list-item__subtitle">공급: ${m.supplier} · 단위: ${m.unit}</div></div><div class="list-item__right"><div class="list-item__amount">사용: ${formatNum(Math.round(outQty))}${m.unit}</div></div></div>`;
     });
     h += `<div class="section-header" style="margin-top:24px"><h3>📊 원료 사용 내역 (이번 달)</h3></div>`;
     const mLogs = filterByMonth(data.workLogs || [], 'date');
-    const usage = {}; mLogs.forEach(wl => { (wl.materials || []).forEach(x => { if (!usage[x.name]) usage[x.name] = { qty: 0, unit: x.unit }; usage[x.name].qty += x.quantity; }); });
+    const usage = {}; mLogs.forEach(wl => { (wl.materials || []).forEach(x => { if (!usage[x.name]) usage[x.name] = { qty: 0, unit: x.unit }; usage[x.name].qty += (x.totalAmount || x.quantity); }); });
     if (!Object.keys(usage).length) h += `<div class="empty-state"><div class="empty-state__text">이번 달 사용 내역이 없습니다.</div></div>`;
     else Object.entries(usage).forEach(([name, v]) => { h += `<div class="list-item"><div class="list-item__icon">📦</div><div class="list-item__body"><div class="list-item__title">${name}</div></div><div class="list-item__right"><div class="list-item__amount">${formatNum(Math.round(v.qty))} ${v.unit}</div></div></div>`; });
     mainContent.innerHTML = h; bindMonthNav();
