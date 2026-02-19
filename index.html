@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>진부양조장 경영관리</title>
+    <meta name="description" content="진부양조장 생산·판매·구매 관리 시스템">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1a1a2e">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Top Header -->
+        <header class="header">
+            <h1 class="header__title">🍶 진부양조장</h1>
+            <span class="header__sub">경영관리 시스템</span>
+        </header>
+
+        <!-- Tab Navigation -->
+        <nav class="tabs">
+            <button class="tab active" data-tab="dashboard">📊<span>대시보드</span></button>
+            <button class="tab" data-tab="production">🏭<span>생산</span></button>
+            <button class="tab" data-tab="sales">💰<span>판매</span></button>
+            <button class="tab" data-tab="purchases">🛒<span>구매</span></button>
+            <button class="tab" data-tab="clients">🏢<span>거래처</span></button>
+            <button class="tab" data-tab="products">📦<span>제품</span></button>
+        </nav>
+
+        <!-- Main Content -->
+        <main id="main-content"></main>
+
+        <!-- FAB (Floating Action Button) -->
+        <button id="fab" class="fab" title="새로 추가">＋</button>
+
+        <!-- Modal -->
+        <div id="modal-overlay" class="modal-overlay hidden">
+            <div class="modal" id="modal">
+                <div class="modal__header">
+                    <h2 id="modal-title">제목</h2>
+                    <button id="modal-close" class="modal__close">✕</button>
+                </div>
+                <div id="modal-body" class="modal__body"></div>
+            </div>
+        </div>
+
+        <!-- Toast -->
+        <div id="toast" class="toast hidden"></div>
+
+        <!-- Confirm Dialog -->
+        <div id="confirm-overlay" class="modal-overlay hidden">
+            <div class="confirm-dialog">
+                <p id="confirm-msg"></p>
+                <div class="confirm-btns">
+                    <button id="confirm-cancel" class="btn btn--outline">취소</button>
+                    <button id="confirm-ok" class="btn btn--danger">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>if ('serviceWorker' in navigator) navigator.serviceWorker.register('./sw.js');</script>
+</body>
+
+</html>
