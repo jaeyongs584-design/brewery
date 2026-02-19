@@ -253,12 +253,13 @@ window.editClient = id => openClientForm(id);
 /* ═══ PRODUCTS ═══ */
 function renderProducts() {
     const prods = data.products || DEFAULT_PRODUCTS; const sizes = data.bottleSizes || DEFAULT_BOTTLES;
-    let h = `<div class="section-header"><h3>🍶 등록된 제품 (${prods.length}종)</h3></div>`;
+    let h = `<div class="section-header"><h3>🍶 등록된 제품 (${prods.length}종)</h3><span class="section-header__action" onclick="openProductForm()">+ 제품 추가</span></div>`;
     prods.forEach(p => { const tp = data.production.filter(r => r.productId === p.id).reduce((s, r) => s + getTotalLiters(r), 0); h += `<div class="list-item" onclick="editProduct('${p.id}')"><div class="list-item__icon">${p.emoji}</div><div class="list-item__body"><div class="list-item__title">오대산 ${p.name} 생막걸리</div><div class="list-item__subtitle">총 생산: ${formatNum(Math.round(tp))}L</div></div></div>`; });
-    h += `<div class="section-header"><h3>📏 병 사이즈 (${sizes.length}종)</h3></div>`;
+    h += `<div class="section-header"><h3>📏 병 사이즈 (${sizes.length}종)</h3><span class="section-header__action" onclick="addBottleSize()">+ 사이즈 추가</span></div>`;
     sizes.forEach((b, i) => { h += `<div class="list-item" onclick="editBottleSize(${i})"><div class="list-item__icon">🍶</div><div class="list-item__body"><div class="list-item__title">${b.label}</div><div class="list-item__subtitle">${b.value}L</div></div></div>`; });
     mainContent.innerHTML = h;
 }
+function addBottleSize() { const sizes = data.bottleSizes || DEFAULT_BOTTLES; editBottleSize(undefined); }
 
 function openProductForm(editId) {
     const ex = editId ? (data.products || []).find(p => p.id === editId) : null;
@@ -291,7 +292,7 @@ function renderWorkLog() {
     h += `<div class="section-header"><h3>📋 작업 일지</h3></div>`;
     if (!recs.length) h += `<div class="empty-state"><div class="empty-state__icon">📋</div><div class="empty-state__text">작업 기록이 없습니다.<br>＋ 버튼으로 추가하세요.</div></div>`;
     else recs.forEach(r => {
-        const p = getProduct(r.productId); const stg = WORK_STAGES.find(s => s.id === r.stage) || { name: '?', emoji: '?' }; const matList = (r.materials || []).map(m => m.name + ' ' + m.quantity + (m.unit || '')).join(', ');
+        const p = getProduct(r.productId); const stg = WORK_STAGES.find(s => s.id === r.stage) || { name: '?', emoji: '?' }; const matList = (r.materials || []).map(m => m.name + ' ' + m.quantity + ' ' + (m.unit || '')).join(', ');
         h += `<div class="list-item" onclick="editWorkLog(${r.id})"><div class="list-item__icon">${stg.emoji}</div><div class="list-item__body"><div class="list-item__title">${p.emoji} ${p.name} — ${stg.name}</div><div class="list-item__subtitle">${formatDateFull(r.date)}${matList ? ' · 원료: ' + matList : ''}${r.note ? ' · ' + r.note : ''}</div></div></div>`;
     });
     mainContent.innerHTML = h; bindMonthNav();
