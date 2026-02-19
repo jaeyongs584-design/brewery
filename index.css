@@ -458,10 +458,17 @@ body {
     gap: 12px;
 }
 
-/* Toggle buttons in form */
+.mat-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: flex-end;
+}
+
 .toggle-group {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 
 .toggle-btn {
