@@ -1,4 +1,4 @@
-const CACHE_NAME = 'brewery-v2';
+const CACHE_NAME = 'brewery-v3';
 const ASSETS = ['./', './index.html', './index.css', './app.js', './manifest.json', './icon-192.svg', './icon-512.svg'];
 
 self.addEventListener('install', e => {
